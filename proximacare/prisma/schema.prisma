@@ -17,4 +17,71 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
+  age   Int  @unique
+  citizen  String?
+  history  History[]
+  symptoms Symptoms[]
+  cancer   Cancer[]
+  treatment  Treatment[]
+  lifestyle   Lifestyle[]
+  genetics    Genetics[]
+  records    Records[]
+  rating     Rating[]
+
+}
+model History {
+  isIll  Ill @default(cancer)
+  medication  String?
+  Allergies   String?
+  Surgery     String?
+}
+enum Ill {
+  Cancer
+  NoCancer
+}
+
+model Symptoms {
+  Pain  Int
+  Fatigue  Boolean  @default(true)
+  Depression  Boolean  @default(true)
+  Anxiety    Boolean   @default(true)
+  Nausea     Boolean   @default(true)
+}
+model Cancer {
+  Type  String?
+  Stage  String?
+  Plans  String?
+}
+
+model Treatment {
+  treat  Treat
+}
+enum Treat{
+  CHEMOTHERAPY
+  RADIATIONTHERAPY
+  IMMUNOTHERAPY
+}
+model Lifestyle {
+  Diet  String?
+  Exercise  Boolean?  @default(false)
+  Smoke    Boolean   @default(false)
+  Alcohol  Boolean   @default(false) 
+}
+model Genetics {
+  mutations  String?
+  disorder    String?
+  bloodgroup  String?
+}
+model Records {
+  Notes   String?
+  Results  String?
+  records  String?
+  Mood     String?
+  Sleep    String?
+  Daily    String?
+}
+model Rating{
+  Satisfaction  String?
+  Effect        String?
+  Quality       String?
 }
