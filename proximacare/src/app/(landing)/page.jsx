@@ -1,9 +1,6 @@
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 
-function Landing () {
-    return(
-        <Button>Test</Button>
-    )
+function Landing() {
 }
 
 export default Landing;
