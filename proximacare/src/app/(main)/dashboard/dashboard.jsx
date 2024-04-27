@@ -12,14 +12,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 import XP from "../../../../public/xp.svg";
 import Star from "../../../../public/star.svg";
 import Appointments from "../../../../public/appointments.svg";
 import Friends from "../../../../public/friends.svg";
 import { SignedIn, UserButton, UserProfile } from "@clerk/nextjs";
 import { useState } from "react";
-
+import { IoMdNotificationsOutline } from "react-icons/io";
+import Navbar from "../dashboard/navbar"
 const Dashboard = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -32,37 +33,8 @@ const Dashboard = () => {
 
   return (
     <>
+    <Navbar/>
       <section id="dashboard">
-        <div className="flex justify-around mt-8 -ml-5">
-          <div className="flex gap-1">
-            <span className="text-[20px] text-[#5C4A6D] font-medium">
-              ProximaCare
-            </span>
-            <Image src={FirstAidKit} className="w-7 h-7" alt="logo" />
-          </div>
-
-          <nav className="flex gap-6">
-            {links.map((link) => (
-              <Link key={link.href} href={link.href}>
-                <ul>
-                  <li
-                    className={`rounded text-gray-700 hover:text-[#5C4A6D] ${
-                      router.pathname === link.href
-                        ? "text-[#5C4A6D] font-bold"
-                        : ""
-                    }`}
-                  >
-                    {link.label}
-                  </li>
-                  <li>
-                    <UserButton />
-                  </li>
-                </ul>
-              </Link>
-            ))}
-          </nav>
-        </div>
-
         <div className="md:mt-20 mt-8 md:ml-[8.5rem] ml-[1rem] ">
           <span className="md:text-[20px] text-[18px] font-medium">
             {/* user.name */}
