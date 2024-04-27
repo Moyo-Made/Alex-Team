@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int         @id @default(autoincrement())
+  email     String      @unique
+  name      String?
+  age       Int         @unique
+  citizen   String?
+  history   History[]
+  symptoms  Symptoms[]
+  cancer    Cancer[]
+  treatment Treatment[]
+  lifestyle Lifestyle[]
+  genetics  Genetics[]
+  records   Records[]
+  rating    Rating[]
+}
+
+model History {
+  id         Int     @unique
+  isIll      Ill
+  medication String?
+  Allergies  String?
+  Surgery    String?
+  User       User?   @relation(fields: [userId], references: [id])
+  userId     Int?
+}
+
+enum Ill {
+  Cancer
+  NoCancer
+}
+
+model Symptoms {
+  id         Int     @unique
+  Pain       Int
+  Fatigue    Boolean @default(true)
+  Depression Boolean @default(true)
+  Anxiety    Boolean @default(true)
+  Nausea     Boolean @default(true)
+  User       User?   @relation(fields: [userId], references: [id])
+  userId     Int?
+}
+
+model Cancer {
+  id     Int     @unique
+  Type   String?
+  Stage  String?
+  Plans  String?
+  User   User?   @relation(fields: [userId], references: [id])
+  userId Int?
+}
+
+model Treatment {
+  id     Int   @unique
+  treat  Treat
+  User   User? @relation(fields: [userId], references: [id])
+  userId Int?
+}
+
+enum Treat {
+  CHEMOTHERAPY
+  RADIATIONTHERAPY
+  IMMUNOTHERAPY
+}
+
+model Lifestyle {
+  id       Int      @unique
+  Diet     String?
+  Exercise Boolean? @default(false)
+  Smoke    Boolean  @default(false)
+  Alcohol  Boolean  @default(false)
+  User     User?    @relation(fields: [userId], references: [id])
+  userId   Int?
+}
+
+model Genetics {
+  id         Int     @unique
+  mutations  String?
+  disorder   String?
+  bloodgroup String?
+  User       User?   @relation(fields: [userId], references: [id])
+  userId     Int?
+}
+
+model Records {
+  id      Int     @unique
+  Notes   String?
+  Results String?
+  records String?
+  Mood    String?
+  Sleep   String?
+  Daily   String?
+  User    User?   @relation(fields: [userId], references: [id])
+  userId  Int?
+}
+
+model Rating {
+  id           Int     @unique
+  Satisfaction String?
+  Effect       String?
+  Quality      String?
+  User         User?   @relation(fields: [userId], references: [id])
+  userId       Int?
+}
