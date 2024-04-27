@@ -96,7 +96,7 @@ const Dashboard = () => {
               <CardDescription className="flex justify-center text-center"></CardDescription>
               <div className="mt-1 ml-7">
                 <span className="text-center text-[20px] text-[#000000] font-bold space-y-3">
-                  2
+                  3
                 </span>
               </div>
 
