@@ -7,7 +7,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 
 const Navbar = () => {
   return (
-    <>
+    <div>
       <nav className="flex justify-around p-4">
           <div className="flex items-center">
             <Link href='/'>
@@ -30,7 +30,7 @@ const Navbar = () => {
             </div> 
           </nav>
 
-    </>
+    </div>
   );
 };
 
