@@ -8,7 +8,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 const Navbar = () => {
   return (
     <>
-      <nav className="flex justify-between p-4">
+      <nav className="flex justify-around p-4">
           <div className="flex items-center">
             <Link href='/'>
                 <Image src={logo} className="" alt="logo" />
